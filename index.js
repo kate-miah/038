@@ -124,6 +124,13 @@ arr1.sort(comparator)
 
 users.sort(function(u1, u2) {
     return u1.age - u2.age
+});
+
+// Метод reduce() - зводить (сводит) все елементи масива до какого-нибудь одного результата
+
+const arr5 = [3, 4, 5, 6, 7, 8, 9];
+const result = arr5.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue
 })
 
 

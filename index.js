@@ -15,3 +15,115 @@ function myJoin(array, separator) {
     } 
     return str + array[array.length - 1];
 }
+
+
+// Функции как агрументи других функций 
+
+function multyTwo(argum) {
+    return argum*2;
+}
+
+function square(argum) {
+    return argum**2;
+}
+
+const fn2 = multyTwo; //передача посилання на функцию
+
+// Фуекция высшего порядка (High order function - HOF)
+
+function getConsoleExp(number, func) { //йункция - аргумент другой функции
+    const res = func(number); // функция обратного вызова
+    console.log(res);
+}
+
+getConsoleExp(4, multyTwo);
+getConsoleExp(3, square);
+
+
+// .forEach(функция) - принимает функция и выполняет ее на каждом елементе массива
+const array = [4, 5, 6, 7, 8]
+array.forEach(callback)
+
+function callback(currentValue,index, array) {
+    console.log(`${currentValue} --- ${index} --- ${array}`);
+}
+
+const users = [{
+    name: 'John',
+    lastName: 'Doe',
+    email: '123@mail',
+    age: 18,
+}, {
+    name: 'Josh',
+    lastName: 'Foe',
+    email: '321@mail',
+    age: 20,
+}, {
+    name: 'Jack',
+    lastName: 'Crow',
+    email: '456@mail',
+    age: 13,
+}, {
+    name: 'Jane',
+    lastName: 'Snow',
+    email: '654@mail',
+    age: 15,
+}];
+// users.forEach(function(currentUser) {
+//     currentUser.age = 20;
+// })
+
+users.forEach(function(currentUser) {
+    console.log(currentUser.email)
+})
+
+// Метод map()
+
+// map(функция) - принимаеь функцию, выполняет ее на каждом елементе начального масива ив качетсве результата возвращает говий масив с результатом работы callback
+
+const emails = users.map(function(currentValue, index, array) {
+    return currentValue.email
+}); // [123@mail, 321@mail, 456@mail, 654@mail]
+
+
+// filter() - фильтрует елементы масива на соответсвие условий
+
+// filter(функция) - создает новий маси, который состоит с елементов начального масива, который "прошел проверку": 
+// функция, которую передали методу, возвращает true - елемент прошел
+// функция возвращает false - елемент не прошел
+
+const filtered = users.filter(function(currentValue, index, array) {
+    return currentValue.age > 18
+})
+
+// Task
+const res = [4, 5, 6, 7, 8, 10].filter(function(currentNum) {
+    return currentNum % 2 === 0
+ })
+
+ // Сортирует масив
+
+ // sort(функция) - принимает функцию и сортирует елементы массива соответсвенно результату работы этой функции
+ // Мутирует масив(изсеняет начальний)
+
+const arr1 = [7, 5, 23, 1, 2, 4];
+
+ function comparator(a, b) { // сравнивающая функция
+    if (a > b) { // если следующий елемент больше чем предыдущий он доложен остаться на места
+        return 1;  // на увеличение или return -1  на уменьшение
+    } else if (a < b) { // если следующий меньше они поменяються местами
+        return -1; // на увеличение или return 1  на уменьшение 
+    } else {
+        return 0;
+    }
+}
+
+arr1.sort(comparator)
+
+// ЗадачаЖ отсортировати юзеров за возрастом
+
+users.sort(function(u1, u2) {
+    return u1.age - u2.age
+})
+
+

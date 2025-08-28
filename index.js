@@ -131,6 +131,39 @@ users.sort(function(u1, u2) {
 const arr5 = [3, 4, 5, 6, 7, 8, 9];
 const result = arr5.reduce(function (accumulator, currentValue) {
     return accumulator + currentValue
-})
+}, 0)
+
+// name, lastName, email, age, gender
 
 
+const USERNAMES = ['John', 'Josh', 'Jane', 'Rick', 'Keyli', 'Li', 'Bill', 'Mark', 'Sten'];
+function User(name, lastName, email, age, gender) {
+    this.name = name;
+    this.lastName = lastName;
+    this.email = email;
+    this.age = age;
+    this.gender = gender;
+}
+
+function generateOneUser(){
+    const name = USERNAMES[getRandom(0, USERNAMES.length)];
+   /* let gender = null;
+    if(Math.random() > 0.5) {
+        gender = 'male';
+    } else {
+        gender = 'female';
+    }*/ 
+    const user = new User(name, 'Doe', `mail${getRandom(0, 100)}@mail.com`, getRandom(10, 100), (Math.random() > 0.5) ? 'male' : 'female');
+    return user;
+}
+
+function getRandom(min, max) { // генерация рандомного числа в заданном диапазоне
+   return Math.floor(Math.random() * (max - min +1) + min);
+}
+function getUsersArray(dimension) {
+    const arr  = new Array(dimension);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = generateOneUser();
+    }
+    return arr;
+}

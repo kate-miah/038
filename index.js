@@ -146,7 +146,7 @@ function User(name, lastName, email, age, gender) {
 }
 
 function generateOneUser(){
-    const name = USERNAMES[getRandom(0, USERNAMES.length)];
+    const name = USERNAMES[getRandom(0, USERNAMES.length - 1)];
    /* let gender = null;
     if(Math.random() > 0.5) {
         gender = 'male';
@@ -167,3 +167,21 @@ function getUsersArray(dimension) {
     }
     return arr;
 }
+
+/* Таски:
+
+Сгенирировать 50 юзеров
+
+1. С помощьюметода forEach каждому юзеру добавить поле isSubscribed = true/false
+(рандомний методом) Math.random() > 0.5
+
+2. Метод map: с масива эзеров получить масив полных имен (имя + фамилия)
+
+3. Метод filter: получить всех совершеннолетних юзеров
+
+4. Отсортировать всех эзеров по имени по алфавиту
+
+5. Получить масив имейлов эеров женского пола, подписанных на новости
+
+*/
+

@@ -181,7 +181,43 @@ function getUsersArray(dimension) {
 
 4. Отсортировать всех эзеров по имени по алфавиту
 
-5. Получить масив имейлов эеров женского пола, подписанных на новости
+5. Получить масив имейлов юзеров женского пола, подписанных на новости
 
 */
 
+const newArray = getUsersArray(50); 
+// 1
+
+newArray.forEach(function(currentUser) {
+    currentUser.isSubscribed = Math.random() > 0.5;
+});
+
+// 2
+
+const fullNames = newArray.map(function(currentValue) {
+    return `${currentValue.name} ${currentValue.lastName}`
+});
+
+// 3 
+
+const adult = newArray.filter(function(currentValue) {
+    return currentValue.age >= 18
+})
+
+// 4
+
+newArray.sort(function(u1, u2) {
+    return u1.name > u2.name ? 1 : -1
+})
+
+// 5
+
+// v1
+const mailsOfSubbsWomen = newArray.map(function(u) {
+    if(u.gender === 'female' && u.isSubscribed) {
+        return u.email
+    }
+}).filter(mail => mail);
+
+// v2
+const mails2 = newArray.filter(u => u.gender === 'female' && u.isSubscribed).map(u => u.email);

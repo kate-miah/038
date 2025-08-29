@@ -221,3 +221,14 @@ const mailsOfSubbsWomen = newArray.map(function(u) {
 
 // v2
 const mails2 = newArray.filter(u => u.gender === 'female' && u.isSubscribed).map(u => u.email);
+
+
+// Метод fill() - заполняет все елементи масива от начального до последнего идексов одни значение
+
+//const arr = new Array(50) // 50 indefind
+//arr.fill(null) // масивы со значение null
+
+
+//function getUsersArray(dimension) {
+//retur new Array(dimension).fill(null).map(generateOneUser);
+//}
